@@ -1,0 +1,80 @@
+Write a function that reverses a string. The input string is given as an array of characters s.
+
+You must do this by modifying the input array in-place with O(1) extra memory.
+
+ 
+
+Example 1:
+
+Input: s = ["h","e","l","l","o"]
+Output: ["o","l","l","e","h"]
+Example 2:
+
+Input: s = ["H","a","n","n","a","h"]
+Output: ["h","a","n","n","a","H"]
+ 
+
+Constraints:
+
+1 <= s.length <= 105
+s[i] is a printable ascii character.
+
+
+
+
+
+source code:
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        left=0
+        right=len(s)-1
+        while left<right:
+            s[left],s[right]=s[right],s[left]
+            left+=1
+            right-=1
+        return s   it is optional
+
+
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+ 
+
+Example 1:
+
+Input: s = "anagram", t = "nagaram"
+
+Output: true
+
+Example 2:
+
+Input: s = "rat", t = "car"
+
+Output: false
+
+ 
+
+Constraints:
+
+1 <= s.length, t.length <= 5 * 104
+s and t consist of lowercase English letters.
+ 
+
+Follow up: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
+
+source code:
+
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s)!=len(t):
+            return False
+        l1,l2=list(s),list(t)
+        for i in range(len(l1)):
+            for j in range(i+1,len(l1)):
+                if l1[i]>l1[j]:
+                    l1[i],l1[j]=l1[j],l1[i]
+        for i in range(len(l2)):
+            for j in range(i+1,len(l2)):
+                if l2[i]>l2[j]:
+                    l2[i],l2[j]=l2[j],l2[i]
+        return l2==l1
+               
