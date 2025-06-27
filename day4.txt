@@ -1,0 +1,143 @@
+704.Binary Search
+--------------------------------
+Given an array of integers nums which is sorted in ascending order, and an integer target, write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
+
+You must write an algorithm with O(log n) runtime complexity.
+
+ 
+
+Example 1:
+
+Input: nums = [-1,0,3,5,9,12], target = 9
+Output: 4
+Explanation: 9 exists in nums and its index is 4
+Example 2:
+
+Input: nums = [-1,0,3,5,9,12], target = 2
+Output: -1
+Explanation: 2 does not exist in nums so return -1
+ 
+
+Constraints:
+
+1 <= nums.length <= 104
+-104 < nums[i], target < 104
+All the integers in nums are unique.
+nums is sorted in ascending order.
+
+source code
+--------------------------------
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        low=0
+        high=len(nums)-1
+        while low<=high:
+            mid=(low+high)//2
+            if nums[mid]==target:
+                return mid
+            elif nums[mid]<target:
+                low=mid+1
+            else:
+                high=mid-1
+        return -1
+
+
+206..Reverse Linked List
+Given the head of a singly linked list, reverse the list, and return the reversed list.
+
+ 
+
+Example 1:
+
+
+Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
+Example 2:
+
+
+Input: head = [1,2]
+Output: [2,1]
+Example 3:
+
+Input: head = []
+Output: []
+ 
+
+Constraints:
+
+The number of nodes in the list is the range [0, 5000].
+-5000 <= Node.val <= 5000
+ 
+
+Follow up: A linked list can be reversed either iteratively or recursively. Could you implement both?
+
+source code
+-----------------------------------------------
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        prev=None
+        current=head
+        while current:
+            next_node=current.next
+            current.next=prev
+            prev=current
+            current=next_node
+        return prev
+
+
+
+Doubly linked list
+---------------------------------
+
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+        self.prev=None
+class DoublyLinkedList:
+    def __init__(self):
+        self.head=None
+    def print_forward(self):
+        temp=self.head
+        while temp:
+            print(temp.data,end="->")
+            temp=temp.next
+        print("None")
+    def print_backward(self):
+        temp=self.head
+        while temp.next:
+            temp=temp.next
+        while temp:
+            print(temp.data,end="->")
+            temp=temp.prev
+        print("None")
+    
+    
+    def insert(self,data):
+        newNode=Node(data)
+        if self.head is None:
+            self.head=newNode
+        else:
+            temp=self.head
+            while temp.next:
+                temp=temp.next
+            temp.next=newNode
+            newNode.prev=temp
+li=DoublyLinkedList()
+li.insert(10)
+li.insert(20)
+li.insert(30)
+li.print_forward()
+li.print_backward()
+
+
+
+            
+            
+       
+        
