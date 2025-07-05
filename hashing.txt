@@ -1,0 +1,41 @@
+Hashing in data structure
+
+it is a none linear data structure
+it is used to convert input into index 
+hash table is used to store the data
+
+source code:
+size=11
+hash_table=[-1]*size
+def hash_function(value):
+    return value%size
+def display():
+    for i in range(size):
+        print(f"index{i}:{hash_table[i]}")
+def insert(value):
+    index=hash_function(value)
+    while hash_table[index]!=-1:
+        index=(index+1)%size
+    hash_table[index]=value
+n=int(input())
+for i in range(n):
+    m=int(input("enter"))
+    insert(m)
+display() 
+
+Expression and evalution
+________________________________
+infix->operator b/w two opernds ex:(a+b)
+postfix->operator after the operands ex: ab+ 
+prefix-> operator before the operands ex: +ab
+
+infix to postfix
+___________________________
+a+b*c-d/(e+f)+g*h
+Result=abc*+def+/-gh*+
+
+#infix to postfix
+#infix to prefix
+#postfx to infix
+#prefix to postfix
+#prefix to infix
